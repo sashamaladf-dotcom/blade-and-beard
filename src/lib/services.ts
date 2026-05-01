@@ -61,7 +61,7 @@ export const services: Service[] = [
       "Wash, blow-dry and a finish with premium product — walk out camera-ready.",
     price: 20,
     duration: "20 min",
-    image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=80",
+    image: "/services/hair-styling.jpg",
   },
 ];
 
