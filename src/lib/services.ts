@@ -34,7 +34,7 @@ export const services: Service[] = [
       "Traditional straight razor shave with hot towels, pre-shave oil and cooling balm.",
     price: 40,
     duration: "45 min",
-    image: "/services/hot-towel-shave.jpg",
+    image: "https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "father-and-son",
@@ -43,7 +43,7 @@ export const services: Service[] = [
       "Haircut for dad plus a fresh cut for the young gentleman (under 12). Bonding included.",
     price: 55,
     duration: "60 min",
-    image: "/services/father-and-son.jpg",
+    image: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "royal-package",
@@ -52,7 +52,7 @@ export const services: Service[] = [
       "Haircut, beard sculpting, hot towel shave and a facial. The full Blade & Beard treatment.",
     price: 70,
     duration: "90 min",
-    image: "/services/royal-package.jpg",
+    image: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "hair-styling",
@@ -61,7 +61,7 @@ export const services: Service[] = [
       "Wash, blow-dry and a finish with premium product — walk out camera-ready.",
     price: 20,
     duration: "20 min",
-    image: "/services/hair-styling.jpg",
+    image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=80",
   },
 ];
 
