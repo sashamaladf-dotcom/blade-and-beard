@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Blade & Beard — Barbershop Landing
 
-## Getting Started
+Light-minimalist landing page for a demo barbershop. Built with **Next.js 16 + React 19 + Tailwind v4 + TypeScript**. Booking requests are sent to a Telegram bot via a React Server Action.
 
-First, run the development server:
+## Stack
+
+- Next.js 16 (App Router)
+- React 19 (`useActionState`)
+- Tailwind CSS v4
+- TypeScript
+- `zod` for form validation
+- `lucide-react` for icons
+- Images hot-linked from Unsplash (`next/image` remote patterns)
+
+## Setup
 
 ```bash
+npm install
+cp .env.local.example .env.local
+# fill in TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open <http://localhost:3000>.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Telegram bot — how to wire it up
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Open Telegram, start a chat with [@BotFather](https://t.me/BotFather), send `/newbot`, follow the prompts. Copy the token it gives you.
+2. Start a chat with your new bot (click the link BotFather returned and send `/start` — this is required, otherwise the bot can't message you).
+3. Open `https://api.telegram.org/bot<YOUR_TOKEN>/getUpdates` in a browser. Find `"chat":{"id": <number>}` in the JSON — that number is your `TELEGRAM_CHAT_ID`.
+4. Paste both values into `.env.local`.
+5. Restart `npm run dev`. Submit the booking form — the message should arrive in Telegram instantly.
 
-## Learn More
+## Project structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/
+│   ├── actions.ts        # submitBooking server action + zod validation
+│   ├── globals.css       # palette, typography
+│   ├── layout.tsx        # fonts, metadata
+│   └── page.tsx          # composes all sections
+├── components/
+│   ├── Navbar.tsx
+│   ├── Hero.tsx
+│   ├── Services.tsx
+│   ├── About.tsx
+│   ├── Gallery.tsx
+│   ├── Reviews.tsx
+│   ├── BookingForm.tsx   # "use client" — useActionState
+│   ├── Contacts.tsx      # form + info side-by-side
+│   ├── Footer.tsx
+│   └── SectionHeading.tsx
+└── lib/
+    ├── services.ts       # services + hero/about/gallery image URLs
+    ├── reviews.ts
+    └── telegram.ts       # sendTelegramMessage()
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `npm run dev` — dev server
+- `npm run build` — production build (also type-checks)
+- `npm run start` — run production build
+- `npm run lint` — ESLint
 
-## Deploy on Vercel
+## Deploy
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Not set up yet. When ready: push to GitHub and import into Vercel, add the two env vars in Vercel project settings.
